@@ -29,7 +29,7 @@ import javax.websocket.server.PathParam
 @Controller
 class HomeController {
 
-    static final String HOST = 'https://demo-accounts-service-dev.herokuapp.com/'
+    static final String HOST = 'https://demo-accounts-service-dev.herokuapp.com'
     static final String API_HOST = 'https://f14p39kdw8.execute-api.us-east-1.amazonaws.com/dev'
     static final String TEST_HOST = 'https://tgz6ve8dd5.execute-api.us-east-1.amazonaws.com/dev'
     static final String USERS = '/users'
