@@ -12,14 +12,6 @@
           rel="stylesheet" media="screen"/>
 </head>
 <body>
-<div>
-    <p>
-        Implementation of API of <a href="https://aws.amazon.com/cognito/?nc1=h_ls">Cognito</a>.
-    </p>
-    <p>
-        <a href="https://github.com/lynx-r/cognito-accounts-service">Fork me</a> on Github.
-    </p>
-</div>
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container">
         <div class="navbar-header">
@@ -32,6 +24,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a href="#description">Info</a></li>
                 <li><a href="#register">Register</a></li>
                 <li><a href="#authenticate">Authenticate</a></li>
                 <li><a href="#regOAuth2">OAuth 2</a></li>
@@ -42,6 +35,14 @@
     </div>
 </div>
 <div class="container">
+    <div id="description">
+        <p>
+            Implementation of API of <a href="https://aws.amazon.com/cognito/?nc1=h_ls">Cognito</a>.
+        </p>
+        <p>
+            <a href="https://github.com/lynx-r/cognito-accounts-service">Fork me</a> on Github.
+        </p>
+    </div>
     <div id="register">
         <div class="row">
             <div class="col-md-4">
