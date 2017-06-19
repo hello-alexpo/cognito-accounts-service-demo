@@ -10,19 +10,19 @@ import org.apache.oltu.oauth2.common.OAuthProviderType
 import org.apache.oltu.oauth2.common.exception.OAuthProblemException
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException
 import org.apache.oltu.oauth2.common.message.types.GrantType
-import org.springframework.http.HttpMethod
-import org.springframework.http.MediaType
-import org.springframework.http.ResponseEntity
+import org.springframework.http.*
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.util.MultiValueMap
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 import javax.websocket.server.PathParam
+
 /**
  * Created by Aleksey Popryaduhin on 13:27 16/06/2017.
  */
@@ -188,11 +188,19 @@ class HomeController {
         params.put('echo', data.echo[0])
 
         RestTemplate restTemplate = new RestTemplate()
-        ResponseEntity result = restTemplate.exchange(uri, HttpMethod.GET, null, String.class, params)
+        try {
+            HttpHeaders headers = new HttpHeaders()
+            headers.add('Authorization', data.id_token[0])
+            HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+            ResponseEntity result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class, params)
+            redirectAttributes.addFlashAttribute('register_STATE_STATUS', true)
+            redirectAttributes.addFlashAttribute('register_STATE_MESSAGE', "SUCCESS ${result.body}")
+        } catch (HttpClientErrorException e) {
+            redirectAttributes.addFlashAttribute('register_STATE_STATUS', false)
+            redirectAttributes.addFlashAttribute('register_STATE_MESSAGE', "FAIL ${e.getMessage()}")
+        }
 
         redirectAttributes.addFlashAttribute('type', 'echo')
-        redirectAttributes.addFlashAttribute('register_STATE_STATUS', true)
-        redirectAttributes.addFlashAttribute('register_STATE_MESSAGE', "SUCCESS ${result.body}")
 
         return 'redirect:/'
     }

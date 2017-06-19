@@ -104,7 +104,7 @@
                     </div>
                 </form>
             </div>
-            <div th:hidden="${type ne 'reg'}" class="col-md-4">
+            <div th:hidden="${type ne 'reg'}" class="col-md-4 wrap">
                 <div th:if="${register_STATE_STATUS}">
                     <div th:text="${register_STATE_MESSAGE}"></div>
                 </div>
@@ -136,7 +136,7 @@
                     </div>
                 </form>
             </div>
-            <div th:hidden="${type ne 'auth'}" class="col-md-4">
+            <div th:hidden="${type ne 'auth'}" class="col-md-4 wrap">
                 <div th:if="${register_STATE_STATUS}">
                     <div th:text="${register_STATE_MESSAGE}"></div>
                 </div>
@@ -190,7 +190,7 @@
                     </div>
                 </form>
             </div>
-            <div th:hidden="${type ne 'echo'}" class="col-md-4">
+            <div th:hidden="${type ne 'echo'}" class="col-md-4 wrap">
                 <div th:if="${register_STATE_STATUS}">
                     <div th:text="${register_STATE_MESSAGE}"></div>
                 </div>
