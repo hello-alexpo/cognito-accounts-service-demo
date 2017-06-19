@@ -27,3 +27,7 @@ div[contenteditable] {
 .margin-top10 {
     margin-top: 10px;
 }
+
+.wrap {
+    overflow-wrap: break-word;
+}
