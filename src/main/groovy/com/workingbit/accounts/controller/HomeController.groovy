@@ -232,5 +232,4 @@ class HomeController {
         }
         return "index"
     }
-
 }
